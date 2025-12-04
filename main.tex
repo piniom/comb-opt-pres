@@ -17,7 +17,7 @@
 \usepackage[libertine]{newtxmath}
 
 
-\title[Enhanced Beamer Demo]{Hamilton Cycles and Elgenvalues of Graphs}
+\title[Enhanced Beamer Demo]{Hamilton Cycles and Eigenvalues of Graphs}
 \author{Szymon Wojtulewicz}
 \date{\today}
 
@@ -160,7 +160,7 @@
   \end{columns}
 \end{frame}
 
-\subsection{Eigen\{\text{values}, \text{vectors}\}}
+\subsection{Eigenvalues and Eigenvectors}
 
 \begin{frame}{Eigenvectors}
   \begin{block}{}
@@ -180,7 +180,6 @@
     \end{bmatrix},\qquad
     x=\begin{bmatrix}1\\[2pt]0\\[2pt]-1\end{bmatrix}.
   \]
-  Verifying:
   \[
     M_G x = \begin{bmatrix}2\\[2pt]0\\[2pt]-2\end{bmatrix} = 2\,x,
   \]
@@ -228,7 +227,7 @@
 
       \medskip
 
-      Spectrum: \(\operatorname{spec}(A_{K_4})=\{3,-1,-1,-1\}\).
+      \(\operatorname{spec}(A_{K_4})=\{3,-1,-1,-1\}\).
     \end{column}
   \end{columns}
 \end{frame}
@@ -318,7 +317,7 @@
 
 \begin{frame}{Main theorem}
   \begin{block}{}
-    If $M$ is an $n \times n$ symmetric matrix then we denote the eigenvalues of $M$ by $\lambda_i(M), i \in \{1, \dots, n\}$ with the order 
+    If $M$ is an $n \times n$ symmetric matrix, we denote its eigenvalues by $\lambda_i(M)$, $i \in \{1, \dots, n\}$, ordered as
     \[
       \lambda_1(M) \leq \lambda_2(M) \leq \ \dots \ \leq \lambda_n(M)
     \]
@@ -436,10 +435,10 @@
 \begin{frame}{Incidence matrix}
   
   \begin{block}{}
-    The incidence matrix of $G$, denoted $P_G$ is the $|V(G)| \times |E(G)|$ matrix with entries
+    The incidence matrix of $G$, denoted $P_G$, is the $|V(G)| \times |E(G)|$ matrix with entries
     \[
       (P_G)_{u,e}=\begin{cases}
-        1 & \text{if $u$ and $e$ are incident} \\
+        1 & \text{if vertex $u$ is incident to edge $e$},\\
         0 & \text{otherwise}.
       \end{cases}
     \]
@@ -463,7 +462,7 @@
     \end{column}
     \begin{column}{0.45\textwidth}
       \[
-        B_G=\begin{bmatrix}
+        P_G=\begin{bmatrix}
           1 & 1 & 0 & 0\\
           1 & 0 & 1 & 0\\
           0 & 1 & 1 & 1\\
@@ -473,14 +472,14 @@
 
       \medskip
 
-      Incidence matrix \(B_G\) for vertices $(1,2,3,4)$ and edges $(e_1,e_2,e_3,e_4)$.
+      Incidence matrix \(P_G\) for vertices $(1,2,3,4)$ and edges $(e_1,e_2,e_3,e_4)$.
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Oriented incidence matrix}
   \begin{block}{}
-    For a chosen orientation of a graph \(G\). The oriented incidence matrix \(K_G\in\{-1,0,1\}^{n\times m}\) has entries
+    For a chosen orientation of a graph \(G\), the oriented incidence matrix \(K_G\in\{-1,0,1\}^{n\times m}\) has entries
     \[
       (K_G)_{v,e}=\begin{cases}
         1 & \text{if }v\text{ is the terminal vertex of }e,\\
@@ -537,6 +536,10 @@
     Apart from multiplicities of the eigenvalue \(0\) their nonzero spectra coincide. \\
     Hence the positive eigenvalues of \(L_G\) agree with the positive eigenvalues of \(K_G^{T}K_G\), and similarly for \(Q_G\) and \(P_G^{T}P_G\).
   \end{block}
+  \pause
+  \begin{block}{}
+    The spectra of \(L_G\) and \(Q_G\) match the spectra of \(K_G^{T}K_G\) and \(P_G^{T}P_G\), respectively, except for multiplicities of the eigenvalue \(0\).
+  \end{block}
 \end{frame}
 
 \begin{frame}{Proof outline}
@@ -548,7 +551,7 @@
     \(K_G\) depends on the chosen orientation, while \(L_G\) does not.
   \end{block}
   \begin{block}{}
-  The spectra of $L_G$ and $Q_G$ match the spectra of \(K_G^{T}K_G\) \(P_G^{T}P_G\) almost entirely.
+    The spectra of \(L_G\) and \(Q_G\) match the spectra of \(K_G^{T}K_G\) and \(P_G^{T}P_G\), respectively, except for multiplicities of the eigenvalue \(0\).
   \end{block}
   \pause
   \begin{block}{}
@@ -581,14 +584,14 @@
 
 \begin{frame}{Main theorem}
 \begin{block}{Theorem 1'.}
-  Let $G$ be a graph on $n$ vertices and $m$ edges. Suppose $G$ contains a Hamilton cycle. Then for $i=1,\dots,n$,
+  Let $G$ be a graph on $n$ vertices and $m$ edges. Suppose $G$ contains a Hamilton cycle. Then for $i \in \{1,\dots,n\}$,
   \[
   \lambda_i(L_{C_n}) \le \lambda_i(L_G)
   \qquad\text{and}\qquad
   \lambda_i(Q_{C_n}) \le \lambda_i(Q_G).
   \]
   \pause
-  In addition, if $m<2n$, then for $i=m-n+1,\dots,n$,
+  In addition, if $m<2n$, then for $i \in \{m-n+1,\dots,n\}$,
   \[
   \lambda_{\,i-m+n}(L_G) \le \lambda_i(L_{C_n}) \le \lambda_i(Q_G)
   \]
@@ -599,7 +602,26 @@
   \end{block}
 \end{frame}
 
-\subsection{Usecase}
+\begin{frame}{Main theorem}
+\begin{block}{Theorem 1'.}
+  Let $G$ be a graph on $n$ vertices and $m$ edges. Suppose $G$ contains a Hamilton cycle. Then for $i \in \{1,\dots,n\}$,
+  \[
+  \lambda_i(L_{C_n}) \le \lambda_i(L_G)
+  \qquad\text{and}\qquad
+  \lambda_i(Q_{C_n}) \le \lambda_i(Q_G).
+  \]
+  In addition, if $m<2n$, then for $i \in \{m-n+1,\dots,n\}$,
+  \[
+  \lambda_{\,i-m+n}(L_G) \le \lambda_i(L_{C_n}) \le \lambda_i(\mathbf{L_G})
+  \]
+  and
+  \[
+  \lambda_{\,i-m+n}(Q_G) > \lambda_i(Q_{C_n}) \le \lambda_i(\mathbf{Q_G}).
+  \]
+  \end{block}
+\end{frame}
+
+\subsection{Use case}
 % \begin{frame}{}
 %   \begin{block}{Corollary 3.}
 %     Let $G$ be a $k$-regular graph on $n$ vertices. If $G$ contains a
@@ -612,11 +634,22 @@
 % \end{frame}
 
 \begin{frame}{A non-hamiltonian graph}
-  \begin{block}{The 1-tough bipartite graph containing a 2-factor}
+  \begin{block}{The 1-tough and 2-factorable bipartite graph.}
     
   \end{block}
   \centering
-    \includegraphics[height=0.5\textheight,keepaspectratio]{img/graph.png}
+  \includegraphics[height=0.5\textheight,keepaspectratio]{img/graph.png}
+
+  \begin{block}{}
+    The fact that this graph is not hamiltonian can be proven using the spectral \textit{Theorem 1} we have proven.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Petersen graph}
+    
+  \centering
+  \includegraphics[height=0.7\textheight,keepaspectratio]{img/petersen.png}
+
 \end{frame}
 
 \end{document}
